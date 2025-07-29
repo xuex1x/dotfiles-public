@@ -62,8 +62,9 @@ sudo chsh -s /bin/zsh "$USER"
 
 tmpdir="$(mktemp -d)"
 #GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" \
-  git clone --depth=1 -- git@github.com:"$GITHUB_USERNAME"/dotfiles-public.git "$tmpdir"
-bootstrap="$(<"$tmpdir"/bin/bootstrap-dotfiles.sh)"
+  #git clone --depth=1 -- git@github.com:"$GITHUB_USERNAME"/dotfiles-public.git "$tmpdir"
+#bootstrap="$(<"$tmpdir"/bin/bootstrap-dotfiles.sh)"
+
 GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" \
   git clone --depth=1 https://github.com/"$GITHUB_USERNAME"/dotfiles-public.git "$tmpdir"
 bootstrap="$(<"$tmpdir"/bin/bootstrap-dotfiles.sh)"
