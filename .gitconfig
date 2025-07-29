@@ -9,7 +9,7 @@
 [difftool]
 	prompt = false
 [core]
-	pager = diff-so-fancy | less -RFXMx4
+	#pager = diff-so-fancy | less -RFXMx4
 	untrackedCache = true
 [color]
 	ui = true
@@ -33,4 +33,4 @@
 [alias]
   patch = apply --ignore-space-change --ignore-whitespace
 [init]
-  defaultBranch = master
+  defaultBranch = main
