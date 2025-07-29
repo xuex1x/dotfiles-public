@@ -13,7 +13,8 @@ fi
 function clone_repo() {
   local repo=$1
   local git_dir="$HOME/.$repo"
-  local uri="git@github.com:$GITHUB_USERNAME/$repo.git"
+  #local uri="git@github.com:$GITHUB_USERNAME/$repo.git"
+  local uri="https://github.com/$GITHUB_USERNAME/$repo.git"
 
   if [[ -e "$git_dir" ]]; then
     return 0
