@@ -493,6 +493,6 @@ fix_shm
 fix_dbus
 fix_imagemagic
 
-set_preferences
+# set_preferences
 
 echo SUCCESS
