@@ -469,7 +469,7 @@ add_to_sudoers
 install_packages
 install_locale
 install_docker
-install_brew
+# install_brew
 install_b2
 install_vscode
 install_ripgrep
