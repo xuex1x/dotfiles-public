@@ -478,9 +478,9 @@ install_bat
 install_gh
 # install_exa
 install_fx
-install_nuget
+# install_nuget
 # install_bw
-install_websocat
+# install_websocat
 # install_fonts
 
 patch_ssh
