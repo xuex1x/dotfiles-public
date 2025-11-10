@@ -44,6 +44,8 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 - Open *PowerShell* as *Administrator* and run:
 ```powershell
 choco.exe install -y microsoft-windows-terminal vcxsrv
+## Or use winget in Windows 11 (24h2)
+winget install vcxsrv
 ```
 - Run *Start > XLaunch*.
   - Click *Next*.
