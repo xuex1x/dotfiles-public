@@ -290,8 +290,11 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 bindkey '^F' forward-word
 bindkey '^P' up-line-or-history
 
+if [ -f ~/.proxy ]; then
+    . ~/.proxy
+fi
+
 # * ~/.extra can be used for other settings you don’t want to commit.
 if [ -f ~/.extra ]; then
     . ~/.extra
 fi
-
