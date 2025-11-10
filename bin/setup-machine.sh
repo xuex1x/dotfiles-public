@@ -471,16 +471,16 @@ install_packages
 install_locale
 # install_docker
 # install_brew
-install_b2
+# install_b2
 # install_vscode
 install_ripgrep
 # install_jc
 install_bat
 install_gh
-# install_exa
+install_exa
 install_fx
 install_nuget
-install_bw
+# install_bw
 install_websocat
 # install_fonts
 
@@ -489,7 +489,7 @@ install_websocat
 # disable_motd_news
 
 fix_locale
-fix_clock
+# fix_clock
 # fix_shm
 # fix_dbus
 # fix_imagemagic
