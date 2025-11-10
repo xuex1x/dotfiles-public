@@ -161,7 +161,7 @@ function install_packages() {
   fi
 
   sudo apt-get update
-  sudo bash -c 'DEBIAN_FRONTEND=noninteractive apt-get -o DPkg::options::=--force-confdef -o DPkg::options::=--force-confold upgrade -y'
+  # sudo bash -c 'DEBIAN_FRONTEND=noninteractive apt-get -o DPkg::options::=--force-confdef -o DPkg::options::=--force-confold upgrade -y'
   sudo apt-get install -y "${packages[@]}"
   sudo apt-get autoremove -y
   sudo apt-get autoclean
@@ -468,10 +468,10 @@ add_to_sudoers
 
 install_packages
 install_locale
-install_docker
-install_brew
+# install_docker
+# install_brew
 install_b2
-install_vscode
+# install_vscode
 install_ripgrep
 # install_jc
 install_bat
@@ -489,7 +489,7 @@ disable_motd_news
 
 fix_locale
 fix_clock
-fix_shm
+# fix_shm
 fix_dbus
 fix_imagemagic
 
