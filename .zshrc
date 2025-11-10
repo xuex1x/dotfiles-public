@@ -1,3 +1,13 @@
+# Personal Zsh configuration file. It is strongly recommended to keep all
+# shell customization and configuration (including exported environment
+# variables such as PATH) in this file or in files sourced from it.
+#
+# Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
+
+# Periodic auto-update on Zsh startup: 'ask' or 'no'.
+# You can manually run `z4h update` to update everything.
+# Set neovim path
+
 zstyle ':z4h:'                  auto-update            no
 zstyle ':z4h:'                  auto-update-days       28
 zstyle ':z4h:*'                 channel                testing
@@ -13,6 +23,7 @@ zstyle ':z4h:'                  prompt-height          4
 # zstyle ':z4h:direnv'          enable                 yes
 # zstyle ':z4h:'                start-tmux             no
 # zstyle ':z4h:'                start-tmux             command tmux -u new -A -D -t z4h
+zstyle ':z4h:'                start-tmux             command tmux -u new -A -s z4h
 # zstyle ':z4h:'                term-vresize           top
 
 if [[ -e ~/.ssh/id_rsa ]]; then
@@ -93,7 +104,7 @@ function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories md
 compdef _default     open
 
-zstyle    ':z4h:ssh:*' enable           yes
+zstyle    ':z4h:ssh:*' enable           no
 zstyle    ':z4h:ssh:*' ssh-command      command ssh
 zstyle    ':z4h:ssh:*' send-extra-files '~/.zshenv-private' '~/.zshrc-private' '~/.config/htop/htoprc'
 zstyle -e ':z4h:ssh:*' retrieve-history 'reply=($ZDOTDIR/.zsh_history.${(%):-%m}:$z4h_ssh_host)'
@@ -154,7 +165,7 @@ setopt ignore_eof
 
 if (( $+functions[toggle-dotfiles] )); then
   zle -N toggle-dotfiles
-  z4h bindkey toggle-dotfiles Ctrl+P
+  z4h bindkey toggle-dotfiles Ctrl+T
 fi
 
 zstyle ':z4h:fzf-dir-history'                fzf-bindings       tab:repeat
@@ -175,11 +186,6 @@ alias '%'=' '
 
 aliases[=]='noglob arith-eval'
 
-alias ls="${aliases[ls]:-ls} -A"
-if [[ -n $commands[dircolors] && ${${:-ls}:c:A:t} != busybox* ]]; then
-  alias ls="${aliases[ls]:-ls} --group-directories-first"
-fi
-
 function grep_no_cr() {
   emulate -L zsh -o pipe_fail
   local -a tty base=(grep)
@@ -199,7 +205,40 @@ alias grep=grep_no_cr
 (( $+commands[tree]  )) && alias tree='tree -a -I .git --dirsfirst'
 (( $+commands[gedit] )) && alias gedit='gedit &>/dev/null'
 (( $+commands[rsync] )) && alias rsync='rsync -rz --info=FLIST,COPY,DEL,REMOVE,SKIP,SYMSAFE,MISC,NAME,PROGRESS,STATS'
-(( $+commands[exa]   )) && alias exa='exa -ga --group-directories-first --time-style=long-iso --color-scale'
+
+if (( $+commands[exa] )); then
+  alias l1='exa -1 --group-directories-first --color=auto'
+  alias ls='exa --group-directories-first --color=auto'
+  alias ll='exa -la --group-directories-first --color=auto'
+  alias la='exa -a --group-directories-first --color=auto'
+  alias l='exa -l --group-directories-first --color=auto'
+  alias lt='exa -T --group-directories-first --color=auto'
+  alias lg='exa -la --git --group-directories-first --color=auto'
+else
+  if ls --version > /dev/null 2>&1; then
+    alias ls='ls --color=auto --group-directories-first'
+    alias ll='ls -alF --color=auto --group-directories-first'
+    alias la='ls -A --color=auto --group-directories-first'
+    alias l='ls -lh --color=auto --group-directories-first'
+  else
+    # BSD/macOS 的 ls：没有 --color=auto，用 -G；也没有 --group-directories-first
+    alias ls='ls -G'
+    alias ll='ls -lG'
+    alias la='ls -laG'
+    alias l='ls -lhG'
+  fi
+
+  # 树形视图回退：若有 tree 命令就用，否则 lt 退化为长列表
+  if (( $+commands[tree] )); then
+    alias lt='tree -C'
+  else
+    alias lt='ls -l'
+  fi
+
+  # 没有 exa/eza 时，lg（git 状态列表）退化为普通长列表
+  alias lg='ll'
+fi
+
 
 if [[ -v commands[xclip] && -n $DISPLAY ]]; then
   function x() xclip -selection clipboard -in
@@ -244,3 +283,15 @@ POSTEDIT=$'\n\n\e[2A'
 
 z4h source -c -- $ZDOTDIR/.zshrc-private
 z4h compile -- $ZDOTDIR/{.zshenv,.zprofile,.zshrc,.zlogin,.zlogout}
+
+export PATH="$HOME/.local/bin:$PATH"
+
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+bindkey '^F' forward-word
+bindkey '^P' up-line-or-history
+
+# * ~/.extra can be used for other settings you don’t want to commit.
+if [ -f ~/.extra ]; then
+    . ~/.extra
+fi
+
