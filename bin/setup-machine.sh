@@ -153,6 +153,8 @@ function install_packages() {
     yodl
     zip
     zsh
+    tmux
+    vim
   )
 
   if (( WSL )); then
