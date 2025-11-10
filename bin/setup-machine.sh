@@ -117,7 +117,8 @@ function install_packages() {
     dos2unix
     g++
     gawk
-    gedit
+    
+    # gedit
     git
     gnome-icon-theme
     gzip
@@ -131,11 +132,11 @@ function install_packages() {
     man
     meld
     moreutils
-    nano
+    # nano
     openssh-server
-    p7zip-full
-    p7zip-rar
-    perl
+    # p7zip-full
+    # p7zip-rar
+    # perl
     poppler-utils
     python3
     python3-pip
@@ -483,15 +484,15 @@ install_bw
 install_websocat
 # install_fonts
 
-patch_ssh
-enable_sshd
-disable_motd_news
+# patch_ssh
+# enable_sshd
+# disable_motd_news
 
 fix_locale
 fix_clock
 # fix_shm
-fix_dbus
-fix_imagemagic
+# fix_dbus
+# fix_imagemagic
 
 set_preferences
 
