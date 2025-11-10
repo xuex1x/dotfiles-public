@@ -18,6 +18,16 @@ This needs to be done once per user.
 - Generate a pair of ssh keys -- `rsa_id` and `rsa_id.pub` -- and add `rsa_id.pub` to github.com. See https://help.github.com/en/articles/connecting-to-github-with-ssh for details. Use a strong passphrase.
 - Backup `rsa_id` in a secure persistent storage system. For example, in your password manager.
 
+```bash
+# 1.生成新 SSH 密钥
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+# 2.在后台启动ssh代理
+eval "$(ssh-agent -s)"
+# 3.将 SSH 密钥添加到 ssh-agent
+ssh-add ~/.ssh/id_rsa
+# 4.将 SSH 公钥添加到 GitHub 上的帐户。
+https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+```
 ### Windows Setup
 
 #### Windows Preparation
