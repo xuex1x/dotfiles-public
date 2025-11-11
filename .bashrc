@@ -136,6 +136,9 @@ fi
 if [ -f ~/.extra ]; then
     . ~/.extra
 fi
+if [ -f ~/.proxy.conf ]; then
+    . ~/.proxy.conf
+f
 
 export LS_COLORS=$(echo $LS_COLORS | sed 's/ow=[0-9;]*/ow=01;34/')
 # Set neovim path
