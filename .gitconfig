@@ -31,6 +31,8 @@
 [rebase]
 	autoStash = true
 [alias]
-  patch = apply --ignore-space-change --ignore-whitespace
+    patch = apply --ignore-space-change --ignore-whitespace
 [init]
-  defaultBranch = master
+    defaultBranch = master
+[includeIf "gitdir:~/"]
+    path = .gitconfig-private

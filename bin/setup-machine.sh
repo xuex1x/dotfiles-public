@@ -389,7 +389,7 @@ function patch_ssh() {
 }
 
 function enable_sshd() {
-  sudo tee /etc/ssh/sshd_config >/dev/null <<\END
+  sudo tee /etc/ssh/sshd_config >/dev/null <<'END'
 ClientAliveInterval 60
 AcceptEnv TERM
 X11Forwarding no
