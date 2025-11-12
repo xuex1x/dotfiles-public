@@ -165,7 +165,8 @@ setopt ignore_eof
 
 if (( $+functions[toggle-dotfiles] )); then
   zle -N toggle-dotfiles
-  z4h bindkey toggle-dotfiles Ctrl+T
+  z4h bindkey toggle-dotfiles Alt+P
+  #z4h bindkey toggle-dotfiles Ctrl+T
 fi
 
 zstyle ':z4h:fzf-dir-history'                fzf-bindings       tab:repeat
