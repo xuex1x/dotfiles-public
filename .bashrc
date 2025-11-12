@@ -118,17 +118,27 @@ elif [ -f /etc/bash_completion.d/git ]; then
     source /etc/bash_completion.d/git
 fi
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# ==============================================================================
+#  Load custom configuration files if they exist and are readable
+# ==============================================================================
+local files_to_source=(
+    "$HOME/.bash_aliases"
+    "$HOME/.extra"
+    "$HOME/.proxy.conf"
+    # "$HOME/.secrets"
+)
 
-# * ~/.extra can be used for other settings you don’t want to commit.
-if [ -f ~/.extra ]; then
-    . ~/.extra
-fi
-if [ -f ~/.proxy.conf ]; then
-    . ~/.proxy.conf
-f
+local file
+for file in "${files_to_source[@]}"; do
+    # -f: is a regular file
+    # -r: is readable
+    if [ -f "$file" ] && [ -r "$file" ]; then
+        . "$file"
+    fi
+done
+
+# Clean up temporary variables to keep the shell environment clean
+unset file files_to_source
 
 export LS_COLORS=$(echo $LS_COLORS | sed 's/ow=[0-9;]*/ow=01;34/')
 # Set neovim path
