@@ -290,23 +290,9 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 bindkey '^F' forward-word
 bindkey '^P' up-line-or-history
 
-# ==============================================================================
-#  Load custom configuration files if they exist and are readable
-# ==============================================================================
-local files_to_source=(
-    # "$HOME/.bash_aliases"
-    "$HOME/.extra"
-    "$HOME/.proxy.conf"
-    # "$HOME/.secrets"
-)
 
-local file
-for file in "${files_to_source[@]}"; do
-    # -f: is a regular file
-    # -r: is readable
-    if [ -f "$file" ] && [ -r "$file" ]; then
-        . "$file"
-    fi
+for file in ~/.extra ~/.proxy.conf; do
+    [ -f "$file" ] && . "$file"
 done
 
 alias tmux-dev='cp ~/.config/tmux/tmux.dev.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'

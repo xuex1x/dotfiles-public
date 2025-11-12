@@ -118,23 +118,8 @@ elif [ -f /etc/bash_completion.d/git ]; then
     source /etc/bash_completion.d/git
 fi
 
-# ==============================================================================
-#  Load custom configuration files if they exist and are readable
-# ==============================================================================
-local files_to_source=(
-    "$HOME/.bash_aliases"
-    "$HOME/.extra"
-    "$HOME/.proxy.conf"
-    # "$HOME/.secrets"
-)
-
-local file
-for file in "${files_to_source[@]}"; do
-    # -f: is a regular file
-    # -r: is readable
-    if [ -f "$file" ] && [ -r "$file" ]; then
-        . "$file"
-    fi
+for file in ~/.bash_aliases ~/.extra ~/.proxy.conf; do
+    [ -f "$file" ] && . "$file"
 done
 
 # Clean up temporary variables to keep the shell environment clean
