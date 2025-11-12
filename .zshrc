@@ -298,3 +298,7 @@ fi
 if [ -f ~/.extra ]; then
     . ~/.extra
 fi
+
+alias tmux-dev='cp ~/.configs/tmux.dev.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias tmux-min='cp ~/.configs/tmux.min.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias tmux-fancy='cp ~/.configs/tmux.fancy.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'

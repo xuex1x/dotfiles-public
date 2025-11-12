@@ -14,7 +14,10 @@ alias -- -='cd -'
 alias vi='vim'
 alias si='sys-info'
 
-## file access start
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -l'
 alias l1='ls -1'
 alias lss="ls | xargs -i du -sh ./{} | sort -rh"
 alias lsr="ls -R | grep :$ | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
@@ -23,13 +26,19 @@ alias lsd="ls -d */"
 alias diff='diff --color=auto'
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias clang-format='clang-format -style=file'
-alias ls='ls --color=auto --group-directories-first'
+alias ls='ls --color=auto '
 alias tree='tree -aC -I .git --dirsfirst'
 alias gedit='gedit &>/dev/null'
 
 alias x='xclip -selection clipboard -in'          # cut to clipboard
 alias v='xclip -selection clipboard -out'         # paste from clipboard
 alias c='xclip -selection clipboard -in -filter'  # copy clipboard
+
+
+alias tmux-dev='cp ~/.configs/tmux.dev.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias tmux-min='cp ~/.configs/tmux.min.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias tmux-fancy='cp ~/.configs/tmux.fancy.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+
 
 function ext() {
     for i in "$@"; do
