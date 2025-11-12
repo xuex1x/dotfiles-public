@@ -295,7 +295,7 @@ for file in ~/.extra ~/.proxy.conf; do
     [ -f "$file" ] && . "$file"
 done
 
-alias tmux-dev='cp ~/.config/tmux/tmux.dev.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
-alias tmux-min='cp ~/.config/tmux/tmux.min.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
-alias tmux-fancy='cp ~/.config/tmux/tmux.fancy.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
-alias tmux='cp ~/.config/tmux/tmux.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias tmux-dev='cp ~/.config/tmux/tmux.dev.conf ~/.tmux.conf && \tmux source-file ~/.tmux.conf'
+alias tmux-min='cp ~/.config/tmux/tmux.min.conf ~/.tmux.conf && \tmux source-file ~/.tmux.conf'
+alias tmux-fancy='cp ~/.config/tmux/tmux.fancy.conf ~/.tmux.conf && \tmux source-file ~/.tmux.conf'
+alias tmux1='cp ~/.config/tmux/tmux.conf ~/.tmux.conf && \tmux source-file ~/.tmux.conf'
