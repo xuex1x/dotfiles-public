@@ -35,9 +35,9 @@ alias v='xclip -selection clipboard -out'         # paste from clipboard
 alias c='xclip -selection clipboard -in -filter'  # copy clipboard
 
 
-alias tmux-dev='cp ~/.config/tmux.dev.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
-alias tmux-min='cp ~/.config/tmux.min.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
-alias tmux-fancy='cp ~/.config/tmux.fancy.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias tmux-dev='cp ~/.config/tmux/tmux.dev.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias tmux-min='cp ~/.config/tmux/tmux.min.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias tmux-fancy='cp ~/.config/tmux/tmux.fancy.conf ~/.tmux.conf && tmux source-file ~/.tmux.conf'
 
 
 function ext() {
