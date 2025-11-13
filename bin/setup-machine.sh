@@ -681,6 +681,6 @@ setup_tmux
 install_neovim
 setup_lazyvim
 
-set_preferences
+# set_preferences
 
 echo SUCCESS
