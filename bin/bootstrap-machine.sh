@@ -70,7 +70,7 @@ if [ -f /etc/os-release ]; then
     fi
 else
     echo "File /etc/os-release not exists."
-f
+fi
 
 tmpdir="$(mktemp -d)"
 GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" \
