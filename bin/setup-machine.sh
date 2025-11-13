@@ -668,7 +668,7 @@ install_nuget
 install_websocat
 
 patch_ssh
-enable_sshd
+# enable_sshd
 disable_motd_news
 
 fix_locale
