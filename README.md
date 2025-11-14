@@ -106,6 +106,9 @@ GITHUB_USERNAME=$USER bash -c \
 ```
 - Say `Yes` when prompted to terminate WSL.
 - Run *Start > Windows Terminal*.
+  - Press <kbd>Ctrl+,</kbd>
+  - Change *Profiles > Ubuntu-22.04 > Appearance > Text Formatting > Intense text style* to *"Bold font"*
+- Run *Start > Windows Terminal*.
   - Press <kbd>Ctrl+Shift+,</kbd>.
   - Replace the content of `settings.json` with [this](https://raw.githubusercontent.com/romkatv/dotfiles-public/master/dotfiles/microsoft-terminal-settings.json). Change "romkatv" to your WSL username.
 
