@@ -20,11 +20,11 @@ set hls
 set history=8192 
 set incsearch 
 set showcmd 
-set ruler 
-set cursorline 
+set ruler
+" set cursorline 
 
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_  " Show invisible characters
-set list 
+"set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_  " Show invisible characters
+"set list 
 
 set ignorecase " Ignore case when searching
 set smartcase " Override 'ignorecase' if the search pattern contains uppercase letters
