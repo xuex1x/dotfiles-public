@@ -8,6 +8,7 @@ set smartindent " Each line has the same indent amount as the previous line
 set background=dark 
 set encoding=utf-8 nobomb 
 set ttyfast 
+highlight Comment ctermfg=2 guifg=#839496
 
 set nobackup 
 set showmode 
