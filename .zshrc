@@ -108,6 +108,7 @@ compdef _default     open
 zstyle    ':z4h:ssh:*' enable           no
 # Enable SSH teleportation for specific hosts.
 zstyle ':z4h:ssh:vdi-b60-u24'   enable yes
+zstyle ':z4h:ssh:media-OptiPlex-7060'   enable yes
 zstyle ':z4h:ssh:*.example-hostname2' enable yes
 zstyle    ':z4h:ssh:*' ssh-command      command ssh
 zstyle    ':z4h:ssh:*' send-extra-files '~/.zshenv-private' '~/.zshrc-private' '~/.config/htop/htoprc' '~/.proxy.conf' '~/.bashrc' '~/.bash_profile' '~/.bash_aliases' '~/.gitconfig' '~/.vimrc' '~/.config/tmux/tmux.conf' '~/.config/tmux/tmux.min.conf' '~/.config/tmux/tmux.fancy.conf'
