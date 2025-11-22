@@ -21,9 +21,9 @@ zstyle ':z4h:'                  propagate-cwd          yes
 zstyle ':z4h:'                  prompt-height          4
 
 # zstyle ':z4h:direnv'          enable                 yes
-# zstyle ':z4h:'                start-tmux             no
+ zstyle ':z4h:'                start-tmux             no
 # zstyle ':z4h:'                start-tmux             command tmux -u new -A -D -t z4h
-zstyle ':z4h:'                start-tmux             command tmux -u new -A -s z4h
+# zstyle ':z4h:'                start-tmux             command tmux -u new -A -s z4h
 # zstyle ':z4h:'                term-vresize           top
 
 if [[ -e ~/.ssh/id_rsa ]]; then
@@ -111,7 +111,7 @@ zstyle ':z4h:ssh:vdi-b60-u24'   enable yes
 zstyle ':z4h:ssh:media-OptiPlex-7060'   enable yes
 zstyle ':z4h:ssh:*.example-hostname2' enable yes
 zstyle    ':z4h:ssh:*' ssh-command      command ssh
-zstyle    ':z4h:ssh:*' send-extra-files '~/.zshenv-private' '~/.zshrc-private' '~/.config/htop/htoprc' '~/.proxy.conf' '~/.bashrc' '~/.bash_profile' '~/.bash_aliases' '~/.gitconfig' '~/.vimrc' '~/.config/tmux/tmux.conf' '~/.config/tmux/tmux.min.conf' '~/.config/tmux/tmux.fancy.conf'
+zstyle    ':z4h:ssh:*' send-extra-files '~/.zshenv-private' '~/.zshrc-private' '~/.config/htop/htoprc' '~/.proxy.conf' '~/.bashrc' '~/.bash_profile' '~/.bash_aliases' '~/.gitconfig' '~/.vimrc' '~/.config/tmux/tmux.conf' '~/.config/tmux/tmux.min.conf' '~/.config/tmux/tmux.fancy.conf' '~/.ssh/environment'
 zstyle -e ':z4h:ssh:*' retrieve-history 'reply=($ZDOTDIR/.zsh_history.${(%):-%m}:$z4h_ssh_host)'
 
 function z4h-ssh-configure() {
