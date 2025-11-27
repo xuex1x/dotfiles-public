@@ -109,6 +109,7 @@ zstyle    ':z4h:ssh:*' enable           no
 # Enable SSH teleportation for specific hosts.
 zstyle ':z4h:ssh:vdi-b60-test*'   enable yes
 zstyle ':z4h:ssh:vdi-f170-*'   enable yes
+zstyle ':z4h:ssh:hyperv'   enable yes
 zstyle ':z4h:ssh:media-OptiPlex-7060'   enable yes
 # zstyle ':z4h:ssh:*.example-hostname2' enable yes
 zstyle    ':z4h:ssh:*' ssh-command      command ssh
