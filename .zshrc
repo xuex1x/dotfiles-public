@@ -113,7 +113,7 @@ zstyle ':z4h:ssh:hyperv*'   enable yes
 zstyle ':z4h:ssh:media-OptiPlex-7060'   enable yes
 # zstyle ':z4h:ssh:*.example-hostname2' enable yes
 zstyle    ':z4h:ssh:*' ssh-command      command ssh
-zstyle    ':z4h:ssh:*' send-extra-files '~/.zshenv-private' '~/.zshrc-private' '~/.curlrc' '~/.proxy.conf' '~/.config/tmux/tmux.conf' '~/.config/tmux/tmux.min.conf' '~/.config/tmux/tmux.fancy.conf' '~/.zsh_history.xuex1x-mobl1:vdi-b60-test01'
+zstyle    ':z4h:ssh:*' send-extra-files '~/.zshenv-private' '~/.zshrc-private' '~/.curlrc' '~/.proxy.conf' '~/.config/tmux/tmux.conf' '~/.config/tmux/tmux.min.conf' '~/.config/tmux/tmux.fancy.conf'
 # zstyle    ':z4h:ssh:*' send-extra-files '~/.zshenv-private' '~/.zshrc-private' '~/.curlrc' '~/.config/htop/htoprc' '~/.proxy.conf' '~/.bashrc' '~/.bash_profile' '~/.bash_aliases' '~/.gitconfig' '~/.vimrc' '~/.config/tmux/tmux.conf' '~/.config/tmux/tmux.min.conf' '~/.config/tmux/tmux.fancy.conf' '~/.ssh/environment' '~/bin' '~/dotfiles'
 zstyle -e ':z4h:ssh:*' retrieve-history 'reply=($ZDOTDIR/.zsh_history.${(%):-%m}:$z4h_ssh_host)'
 
@@ -124,6 +124,7 @@ function z4h-ssh-configure() {
   local machine_tag
   case $z4h_ssh_host in
     vdi-*) machine_tag=vdi;;
+    hyperv-*) machine_tag=hyperv;;
     *)     machine_tag=$z4h_ssh_host;;
   esac
 
