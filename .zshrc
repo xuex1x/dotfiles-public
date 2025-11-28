@@ -109,22 +109,38 @@ zstyle    ':z4h:ssh:*' enable           no
 # Enable SSH teleportation for specific hosts.
 zstyle ':z4h:ssh:vdi-b60-test*'   enable yes
 zstyle ':z4h:ssh:vdi-f170-*'   enable yes
-zstyle ':z4h:ssh:hyperv'   enable yes
+zstyle ':z4h:ssh:hyperv*'   enable yes
 zstyle ':z4h:ssh:media-OptiPlex-7060'   enable yes
 # zstyle ':z4h:ssh:*.example-hostname2' enable yes
 zstyle    ':z4h:ssh:*' ssh-command      command ssh
-zstyle    ':z4h:ssh:*' send-extra-files '~/.zshenv-private' '~/.zshrc-private' '~/.curlrc' '~/.proxy.conf' '~/.config/tmux/tmux.conf' '~/.config/tmux/tmux.min.conf' '~/.config/tmux/tmux.fancy.conf'
+zstyle    ':z4h:ssh:*' send-extra-files '~/.zshenv-private' '~/.zshrc-private' '~/.curlrc' '~/.proxy.conf' '~/.config/tmux/tmux.conf' '~/.config/tmux/tmux.min.conf' '~/.config/tmux/tmux.fancy.conf' '~/.zsh_history.xuex1x-mobl1:vdi-b60-test01'
 # zstyle    ':z4h:ssh:*' send-extra-files '~/.zshenv-private' '~/.zshrc-private' '~/.curlrc' '~/.config/htop/htoprc' '~/.proxy.conf' '~/.bashrc' '~/.bash_profile' '~/.bash_aliases' '~/.gitconfig' '~/.vimrc' '~/.config/tmux/tmux.conf' '~/.config/tmux/tmux.min.conf' '~/.config/tmux/tmux.fancy.conf' '~/.ssh/environment' '~/bin' '~/dotfiles'
 zstyle -e ':z4h:ssh:*' retrieve-history 'reply=($ZDOTDIR/.zsh_history.${(%):-%m}:$z4h_ssh_host)'
 
+
 function z4h-ssh-configure() {
+  emulate -L zsh
   (( z4h_ssh_enable )) || return 0
-  local file
-  for file in $ZDOTDIR/.zsh_history.*:$z4h_ssh_host(N); do
-    (( $+z4h_ssh_send_files[$file] )) && continue
-    z4h_ssh_send_files[$file]='"$ZDOTDIR"/'${file:t}
+  local machine_tag
+  case $z4h_ssh_host in
+    vdi-*) machine_tag=vdi;;
+    *)     machine_tag=$z4h_ssh_host;;
+  esac
+
+  local local_hist=$ZDOTDIR/.zsh/history/retrieved_from_$machine_tag
+  local remote_hist='"$ZDOTDIR"/.zsh/history/received_from_'${(q)z4h_ssh_client}
+  z4h_ssh_send_files[$local_hist]=$remote_hist
+  z4h_retrieve_history+=($local_hist)
+}
+
+() {
+  emulate -L zsh -o extended_glob
+  local hist
+  for hist in $ZDOTDIR/.zsh/history/received_from_*(NOm); do
+    fc -RI $hist
   done
 }
+
 
 [[ -e ~/.ssh/control-master ]] || zf_mkdir -p -m 700 ~/.ssh/control-master
 
