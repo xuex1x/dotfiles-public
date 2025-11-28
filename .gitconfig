@@ -34,5 +34,5 @@
     patch = apply --ignore-space-change --ignore-whitespace
 [init]
     defaultBranch = master
-[includeIf "gitdir:~/"]
-    path = .gitconfig-private
+#[includeIf "gitdir:~/"]
+#    path = .gitconfig-private

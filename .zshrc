@@ -312,14 +312,8 @@ z4h compile -- $ZDOTDIR/{.zshenv,.zprofile,.zshrc,.zlogin,.zlogout}
 
 export PATH="$HOME/.local/bin:$PATH"
 
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 bindkey '^F' forward-word
 bindkey '^P' up-line-or-history
-
-
-for file in ~/.extra ~/.proxy.conf; do
-    [ -f "$file" ] && . "$file"
-done
 
 alias tmux-dev='cp ~/.config/tmux/tmux.dev.conf ~/.tmux.conf && \tmux source-file ~/.tmux.conf'
 alias tmux-min='cp ~/.config/tmux/tmux.min.conf ~/.tmux.conf && \tmux source-file ~/.tmux.conf'
