@@ -661,10 +661,6 @@ install_bat
 install_gh
 install_fx
 install_nuget
-install_exa
-install_fx
-install_nuget
-# install_bw
 install_websocat
 
 patch_ssh
