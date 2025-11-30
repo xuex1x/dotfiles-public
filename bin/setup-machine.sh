@@ -644,39 +644,62 @@ fi
 
 umask g-w,o-w
 
-add_to_sudoers
 
-install_packages
-install_locale
-# install_docker
-# install_brew
-# install_b2
-# install_vscode
-# install_jc
-# install_bw
-# install_fonts
-install_ripgrep
-install_exa
-install_bat
-install_gh
-install_fx
-install_nuget
-install_websocat
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
 
-patch_ssh
-# enable_sshd
-disable_motd_news
+    if [[ "$ID" == "debian" || "$ID_LIKE" == "debian" ]]; then
 
-fix_locale
-# fix_clock
-# fix_shm
-# fix_dbus
-# fix_imagemagic
-fix_locale
-setup_tmux
-install_neovim
-setup_lazyvim
+      add_to_sudoers
+      install_packages
+      install_locale
+      # install_docker
+      # install_brew
+      # install_b2
+      # install_vscode
+      # install_jc
+      # install_bw
+      # install_fonts
+      install_ripgrep
+      install_exa
+      install_bat
+      install_gh
+      install_fx
+      install_nuget
+      install_websocat
+      patch_ssh
+      # enable_sshd
+      disable_motd_news
+      fix_locale
+      # fix_clock
+      # fix_shm
+      # fix_dbus
+      # fix_imagemagic
+      fix_locale
+      setup_tmux
+      install_neovim
+      setup_lazyvim
+      # set_preferences
 
-# set_preferences
+    elif [[ "$ID" == "fedora" || "$ID_LIKE" == "fedora" || "$ID" == "centos" || "$ID" == "rhel" || "$ID" == "openEuler" ]]; then
+
+      add_to_sudoers
+      #  install_packages_rpm
+      # install_locale
+      # fix_locale
+      # install_fonts
+      # install_ripgrep
+      install_exa
+      # install_bat
+      setup_tmux
+      install_neovim
+      setup_lazyvim
+
+    else
+        echo "Not support yet, ID: $ID, ID_LIKE: $ID_LIKE"
+    fi
+else
+    echo "File /etc/os-release not exists."
+fi
 
 echo SUCCESS
