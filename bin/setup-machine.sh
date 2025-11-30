@@ -365,11 +365,11 @@ function add_to_sudoers() {
     fi
  
 
-   if [[ "$ID_LIKE" =~ (debian|ubuntu) || "$ID" =~ (debian|ubuntu) ]]; then
+   if [[ "$ID" =~ (debian|ubuntu) ]]; then
      sudo usermod -aG sudo "$USER"
      sudo tee /etc/sudoers.d/"$USER" <<<"$USER ALL=(ALL) NOPASSWD:ALL" >/dev/null
      sudo chmod 440 /etc/sudoers.d/"$USER"
-   elif [[ "$ID_LIKE" =~ (rhel|fedora|centos) || "$ID" =~ (rhel|fedora|centos|rocky|almalinux|openEuler) ]]; then
+   elif [[ "$ID" =~ (rhel|fedora|centos|rocky|almalinux|openEuler) ]]; then
      sudo usermod -aG wheel "$USER"
      sudo tee /etc/sudoers.d/"$USER" <<<"$USER ALL=(ALL) NOPASSWD:ALL" >/dev/null
      sudo chmod 440 /etc/sudoers.d/"$USER"
@@ -658,7 +658,7 @@ umask g-w,o-w
 if [ -f /etc/os-release ]; then
     . /etc/os-release
 
-    if [[ "$ID_LIKE" =~ (debian|ubuntu) || "$ID" =~ (debian|ubuntu) ]]; then
+    if [[ "$ID" =~ (debian|ubuntu) ]]; then
 
       add_to_sudoers
       install_packages
@@ -691,7 +691,7 @@ if [ -f /etc/os-release ]; then
       setup_lazyvim
       # set_preferences
 
-    elif [[ "$ID_LIKE" =~ (rhel|fedora|centos) || "$ID" =~ (rhel|fedora|centos|rocky|almalinux|openEuler) ]]; then
+    elif [[ "$ID" =~ (rhel|fedora|centos|rocky|almalinux|openEuler) ]]; then
 
       add_to_sudoers
       #  install_packages_rpm
