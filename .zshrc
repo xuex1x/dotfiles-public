@@ -316,7 +316,5 @@ export PATH="$HOME/.local/bin:$PATH"
 bindkey '^F' forward-word
 bindkey '^P' up-line-or-history
 
-alias tmux-dev='cp ~/.config/tmux/tmux.dev.conf ~/.tmux.conf && \tmux source-file ~/.tmux.conf'
-alias tmux-min='cp ~/.config/tmux/tmux.min.conf ~/.tmux.conf && \tmux source-file ~/.tmux.conf'
-alias tmux-fancy='cp ~/.config/tmux/tmux.fancy.conf ~/.tmux.conf && \tmux source-file ~/.tmux.conf'
-alias tmux1='cp ~/.config/tmux/tmux.conf ~/.tmux.conf && \tmux source-file ~/.tmux.conf'
+alias tmux-min='\tmux source-file ~/.config/tmux/tmux.min.conf'
+alias tmux-fancy='\tmux source-file ~/.config/tmux/tmux.fancy.conf'
