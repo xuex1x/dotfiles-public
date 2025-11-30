@@ -160,7 +160,7 @@ function install_packages() {
   if (( WSL )); then
     packages+=(dbus-x11)
   else
-    packages+=(gnome-tweak-tool imagemagick iotop tilix remmina wireguard docker.io)
+    packages+=(gnome-tweak-tool imagemagick iotop tilix remmina wireguard )
   fi
 
   sudo apt-get update
