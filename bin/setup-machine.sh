@@ -155,6 +155,7 @@ function install_packages() {
     zsh
     tmux
     vim
+    vim-gtk3
   )
 
   if (( WSL )); then
@@ -168,6 +169,25 @@ function install_packages() {
   sudo apt-get install -y "${packages[@]}"
   sudo apt-get autoremove -y
   sudo apt-get autoclean
+}
+
+# Install a bunch of rpm packages.
+function install_packages_rpm() {
+  local packages=(
+  vim-X11
+  )
+
+  if (( WSL )); then
+    packages+=(dbus-x11)
+  else
+    packages+=(iotop tilix wireguard )
+  fi
+
+  sudo dnf check-update             
+  sudo dnf install -y "${packages[@]}" 
+  sudo dnf autoremove -y            
+  sudo dnf clean all      
+
 }
 
 function install_b2() {
@@ -694,7 +714,7 @@ if [ -f /etc/os-release ]; then
     elif [[ "$ID" =~ (rhel|fedora|centos|rocky|almalinux|openEuler) ]]; then
 
       add_to_sudoers
-      #  install_packages_rpm
+      install_packages_rpm
       # install_locale
       # fix_locale
       # install_fonts
