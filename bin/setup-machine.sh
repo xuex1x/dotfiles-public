@@ -180,10 +180,9 @@ function install_packages_rpm() {
   if (( WSL )); then
     packages+=(dbus-x11)
   else
-    packages+=(iotop tilix wireguard )
+    packages+=(iotop )
   fi
 
-  sudo dnf check-update             
   sudo dnf install -y "${packages[@]}" 
   sudo dnf autoremove -y            
   sudo dnf clean all      
@@ -387,15 +386,17 @@ function add_to_sudoers() {
 
    if [[ "$ID" =~ (debian|ubuntu) ]]; then
      sudo usermod -aG sudo "$USER"
-     sudo tee /etc/sudoers.d/"$USER" <<<"$USER ALL=(ALL) NOPASSWD:ALL" >/dev/null
-     sudo chmod 440 /etc/sudoers.d/"$USER"
    elif [[ "$ID" =~ (rhel|fedora|centos|rocky|almalinux|openEuler) ]]; then
      sudo usermod -aG wheel "$USER"
-     sudo tee /etc/sudoers.d/"$USER" <<<"$USER ALL=(ALL) NOPASSWD:ALL" >/dev/null
-     sudo chmod 440 /etc/sudoers.d/"$USER"
    else
      eco "Not support yet, ID: $ID, ID_LIKE: $ID_LIKE"
    fi
+     
+   sudo tee /etc/sudoers.d/"$USER" <<<"$USER ALL=(ALL) NOPASSWD:ALL" >/dev/null
+   sudo tee -a /etc/sudoers.d/"$USER" <<<'Defaults env_keep += "http_proxy https_proxy ftp_proxy rsync_proxy"' >/dev/null
+   sudo tee -a /etc/sudoers.d/"$USER" <<<'Defaults env_keep += "HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY"' >/dev/null
+   sudo tee -a /etc/sudoers.d/"$USER" <<<'Defaults env_keep += "no_proxy NO_PROXY"' >/dev/null
+   sudo chmod 440 /etc/sudoers.d/"$USER"
 
 }
 
