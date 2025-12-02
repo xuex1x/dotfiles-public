@@ -183,9 +183,9 @@ function install_packages_rpm() {
     packages+=(iotop )
   fi
 
-  sudo dnf install -y "${packages[@]}" 
-  sudo dnf autoremove -y            
-  sudo dnf clean all      
+  sudo yum install -y "${packages[@]}" 
+  sudo yum autoremove -y            
+  sudo yum clean all      
 
 }
 
